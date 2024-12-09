@@ -11,17 +11,23 @@ nav {
   margin: 1rem 3rem 2rem 3rem;
 }
 .search-bar {
-  background-color: white;
+  background-color: transparent;
   border: none;
   outline: none;
-  margin-bottom: 1rem;
+  margin-right: 1rem;
 }
 .search-bar-container {
+  border: 2px solid var(--charcoal);
+  border-radius: 2rem;
   display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
 .search-bar::placeholder {
   color: var(--charcoal);
 }
-nav span {
+.fav-cart span {
   margin-bottom: 1rem;
+  padding: 1rem;
 }
