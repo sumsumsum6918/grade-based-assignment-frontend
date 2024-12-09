@@ -1,0 +1,65 @@
+:root {
+  --burgundy: #800020;
+  --warmgold: #daa520;
+  --charcoal: #333333;
+  --creamybeige: #faf0e6;
+  --midnightblue: #191970;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", serif;
+  color: var(--charcoal);
+}
+body {
+  background-color: var(--warmgold);
+}
+.cocktail {
+  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+.heart-filled {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+.heart {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
+}
+.share {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+main,
+.random-drink-card {
+  display: flex;
+  flex-direction: column;
+}
+main {
+  align-items: center;
+}
+.random-drink-card {
+  border-radius: 0.75rem;
+  padding: 2rem 3rem;
+  background-color: var(--creamybeige);
+  width: 70%;
+  margin-bottom: 2rem;
+}
+h3 {
+  text-align: center;
+  font-family: "Fredericka the Great";
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.drink-img {
+  margin-bottom: 1rem;
+}
+.actions span {
+  font-size: 1.75rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+.reshake-button {
+  font-family: "Fredericka the Great";
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+  color: var(--burgundy);
+  background-color: transparent;
+  cursor: pointer;
+}

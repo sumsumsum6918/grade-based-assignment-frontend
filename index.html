@@ -3,10 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exam - Name</title>
-    <link rel="stylesheet" href="index.css" />
+    <title>Exam - Sum I Fong</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite,ios_share,local_bar"
+    />
+
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/navbar.css" />
   </head>
   <body>
-    <script src="index.js" type="module"></script>
+    <nav>
+      <h1>
+        Drink <br />
+        Tonight
+      </h1>
+      <div class="search-bar-container">
+        <input class="search-bar" type="text" placeholder="search" />
+        <span class="material-symbols-outlined cocktail"> local_bar </span>
+      </div>
+      <span class="material-symbols-outlined heart"> favorite </span>
+    </nav>
+    <main>
+      <p>Drink Of The Day</p>
+      <div class="random-drink-card">
+        <h3>Drink Name</h3>
+        <img class="drink-img" src="" alt="random-drink-image" />
+        <div class="actions">
+          <span class="material-symbols-outlined heart"> favorite </span>
+          <span class="material-symbols-outlined share"> ios_share </span>
+        </div>
+      </div>
+      <button class="reshake-button">Not The Vibe</button>
+    </main>
+    <script src="script/index.js" type="module"></script>
   </body>
 </html>
