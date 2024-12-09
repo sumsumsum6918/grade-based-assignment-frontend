@@ -49,9 +49,11 @@ h3 {
   font-family: "Fredericka the Great";
   font-size: 2rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 .drink-img {
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 .actions span {
   font-size: 1.75rem;
@@ -62,9 +64,19 @@ h3 {
   font-family: "Fredericka the Great";
   font-size: 1.5rem;
   padding: 1rem 1.5rem;
-  color: var(--burgundy);
+  color: var(--charcoal);
   background-color: transparent;
+  border: none;
+  border-radius: 2rem;
   cursor: pointer;
+  transition: all 0.2s;
+}
+.reshake-button:hover {
+  background-color: var(--burgundy);
+  color: var(--warmgold);
+}
+.reshake-button:active {
+  background-color: rgba(128, 0, 32, 0.7);
 }
 .badge-container {
   position: absolute;
