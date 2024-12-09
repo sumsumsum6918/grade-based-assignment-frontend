@@ -13,7 +13,7 @@
 
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite,ios_share,local_bar"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=brightness_empty,favorite,ios_share,local_bar"
     />
 
     <link rel="stylesheet" href="styles/index.css" />
@@ -32,7 +32,17 @@
       <span class="material-symbols-outlined heart"> favorite </span>
     </nav>
     <main>
-      <p>Drink Of The Day</p>
+      <div class="badge-container">
+        <span class="material-symbols-outlined star">
+          brightness_empty
+          <p class="badge-context">
+            Drink <br />
+            Of The
+            <br />
+            Day
+          </p>
+        </span>
+      </div>
       <div class="random-drink-card">
         <h3>Drink Name</h3>
         <img class="drink-img" src="" alt="random-drink-image" />
