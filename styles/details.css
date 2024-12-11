@@ -16,6 +16,9 @@
   color: var(--burgundy);
   cursor: pointer;
 }
+.detail-drink-img {
+  width: 100%;
+}
 .detail-actions span {
   margin-right: 0.5rem;
   cursor: pointer;

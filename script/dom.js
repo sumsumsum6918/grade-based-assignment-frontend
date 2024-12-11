@@ -41,7 +41,7 @@ export function generateDetailsPageHTML(drinkObject) {
           <article class="detail-drink-container">
             <div class="detail-drink-card">
               <h3>${drinkObject.name}</h3>
-              <img class="drink-img" src="" alt="detail-drink-image" />
+              <img class="detail-drink-img" src="${drinkObject.thumbnail}" alt="detail-drink-image" />
               <div class="detail-actions">
                 <span class="material-symbols-outlined heart"> favorite </span>
                 <span class="material-symbols-outlined share"> ios_share </span>
@@ -81,14 +81,20 @@ export function generateDetailsPageHTML(drinkObject) {
   `;
   detailsPage.innerHTML = detailPageHTML;
 
-  generateDrinkTags(drinkObject.alcoholic, drinkObject.tags);
+  generateDrinkTags(drinkObject);
 }
 
-function generateDrinkTags(alcoholic, tags) {
+function generateDrinkTags(drinkObject) {
+  const tags = drinkObject.tags;
+  const alcoholic = drinkObject.alcoholic;
+  const category = drinkObject.category;
+
   let tagsHTML = "";
+  tagsHTML = `<span>#${category}</span>`;
+
   if (alcoholic) {
-    tagsHTML = "<span>#Alcoholic</span>";
-  } else tagsHTML = "<span>#Non-alcoholic</span>";
+    tagsHTML += "<span>#Alcoholic</span>";
+  } else tagsHTML += "<span>#Non-alcoholic</span>";
 
   tags.forEach((tag) => {
     if (tag === "Alcoholic") return;
