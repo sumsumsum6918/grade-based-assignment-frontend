@@ -27,12 +27,12 @@ body {
 .share {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
-main,
+.random-drink-page,
 .random-drink-card {
   display: flex;
   flex-direction: column;
 }
-main {
+.random-drink-page {
   padding-top: 4rem;
   align-items: center;
   position: relative;
@@ -52,6 +52,7 @@ h3 {
   cursor: pointer;
 }
 .drink-img {
+  object-fit: cover;
   margin-bottom: 1rem;
   cursor: pointer;
 }
@@ -64,6 +65,7 @@ h3 {
   font-family: "Fredericka the Great";
   font-size: 1.5rem;
   padding: 1rem 1.5rem;
+  margin-bottom: 3rem;
   color: var(--charcoal);
   background-color: transparent;
   border: none;
