@@ -72,6 +72,7 @@ export function generateDetailsPageHTML(drinkObject) {
   generateIngredientsCard(drinkObject.ingredients);
   generateInstructions(drinkObject.instructions);
 }
+
 function generateInstructions(instructions) {
   let instructionsHTML = "";
 
@@ -105,7 +106,10 @@ function generateIngredientsCard(ingredientsArray) {
 function generateDrinkTags(drinkObject) {
   const tags = drinkObject.tags;
   const alcoholic = drinkObject.alcoholic;
-  const category = drinkObject.category;
+  let category = drinkObject.category;
+  if (category.includes("")) {
+    category = category.replace(/\s+/g, "");
+  }
 
   let tagsHTML = "";
   tagsHTML = `<span>#${category}</span>`;
