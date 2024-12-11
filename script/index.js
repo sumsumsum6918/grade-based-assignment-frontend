@@ -1,7 +1,7 @@
 import { mapRawCocktailData } from "../script/utilities.js";
-import { getRandomDrink, getDrink } from "../script/api.js";
+import { getRandomDrink } from "../script/api.js";
 import { handleReshakeButton, handleDrinkOnClick } from "./event.js";
-import { generateIndexHTML, generateDetailsPageHTML } from "./dom.js";
+import { generateIndexHTML } from "./dom.js";
 
 loadPage();
 export async function loadPage() {
