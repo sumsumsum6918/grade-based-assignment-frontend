@@ -53,18 +53,6 @@ export function generateDetailsPageHTML(drinkObject) {
 
         <div class="right-details">
           <div class="ingredients-grid">
-            <div class="ingredient-card">
-              <img src="" alt="ingredient" />
-              <span class="ingredient-amount">2-4 Mint</span>
-            </div>
-            <div class="ingredient-card">
-              <img src="" alt="ingredient" />
-              <span class="ingredient-amount">2-4 Mint</span>
-            </div>
-            <div class="ingredient-card">
-              <img src="" alt="ingredient" />
-              <span class="ingredient-amount">2-4 Mint</span>
-            </div>
           </div>
 
           <div class="instructions-container">
@@ -83,9 +71,20 @@ export function generateDetailsPageHTML(drinkObject) {
 
   generateDrinkTags(drinkObject);
   generateIngredientsCard(drinkObject.ingredients);
+  generateInstructions(drinkObject.instructions);
 }
+function generateInstructions(instructions) {
+  let instructionsHTML = "";
+
+  instructions.forEach((i) => {
+    instructionsHTML += `<li>${i}</li>`;
+  });
+
+  const instructionListElement = document.querySelector(".instructions-list");
+  instructionListElement.innerHTML = instructionsHTML;
+}
+
 function generateIngredientsCard(ingredientsArray) {
-  console.log(ingredientsArray);
   let ingredientsHTML = "";
 
   ingredientsArray.forEach((i) => {
@@ -94,7 +93,8 @@ function generateIngredientsCard(ingredientsArray) {
       <img src="https://www.thecocktaildb.com/images/ingredients/${
         i.ingredient
       }-Small.png" alt="ingredient" />
-      <span class="ingredient-amount">${i.measure + " " + i.ingredient}</span>
+      <span class="ingredient-amount">${i.measure ? i.measure : ""} 
+      ${i.ingredient}</span>
     </div>
 `;
   });
