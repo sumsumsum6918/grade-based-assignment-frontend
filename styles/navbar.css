@@ -22,12 +22,16 @@ nav {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 .search-bar::placeholder {
   color: var(--charcoal);
 }
+.search-bar-container span {
+  cursor: pointer;
+}
 .fav-cart span {
   margin-bottom: 1rem;
   padding: 1rem;
+  cursor: pointer;
 }

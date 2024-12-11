@@ -98,3 +98,6 @@ h3 {
   left: 2.5rem;
   line-height: 1.7rem;
 }
+.hide {
+  display: none;
+}
