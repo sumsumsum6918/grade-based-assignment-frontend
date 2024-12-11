@@ -18,6 +18,7 @@
 
     <link rel="stylesheet" href="styles/index.css" />
     <link rel="stylesheet" href="styles/navbar.css" />
+    <link rel="stylesheet" href="styles/details.css" />
   </head>
   <body>
     <nav>
@@ -35,7 +36,7 @@
       </div>
     </nav>
     <main>
-      <section class="random-drink-page">
+      <section class="hide random-drink-page">
         <div class="badge-container">
           <span class="material-symbols-outlined star">
             brightness_empty
@@ -58,7 +59,50 @@
         <button class="reshake-button">Not The Vibe, Again</button>
       </section>
 
-      <section class="details-page"></section>
+      <section class="details-page">
+        <div class="left-details">
+          <article class="details-tag-container">
+            <span>#ALCOHOLIC</span>
+            <span>#IBA</span>
+            <span>#USA</span>
+          </article>
+
+          <article class="detail-drink-container">
+            <div class="detail-drink-card">
+              <h3>Drink Name</h3>
+              <img class="drink-img" src="" alt="detail-drink-image" />
+              <div class="actions">
+                <span class="material-symbols-outlined heart"> favorite </span>
+                <span class="material-symbols-outlined share"> ios_share </span>
+              </div>
+              <div class="detail-drink-glass">Glass Type: Cocktail Glass</div>
+            </div>
+          </article>
+        </div>
+        <div class="right-details">
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <img src="" alt="ingredient" />
+              <span class="ingredient-amount">2-4 Mint</span>
+            </div>
+            <div class="ingredient-card">
+              <img src="" alt="ingredient" />
+              <span class="ingredient-amount">2-4 Mint</span>
+            </div>
+            <div class="ingredient-card">
+              <img src="" alt="ingredient" />
+              <span class="ingredient-amount">2-4 Mint</span>
+            </div>
+          </div>
+          <ol class="instructions">
+            <li>
+              Wash and brush an organic, untreated lemon, then cut a spiral of
+              lemon peel, using a citrus peel.
+            </li>
+            <li>If it is too large, cut it with a sharp knife.</li>
+          </ol>
+        </div>
+      </section>
     </main>
     <script src="script/index.js" type="module"></script>
   </body>
