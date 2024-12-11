@@ -1,24 +1,24 @@
 import { mapRawCocktailData } from "../script/utilities.js";
 import { getRandomDrink, getDrink } from "../script/api.js";
-import { handleReshakeButton } from "./event.js";
+import { handleReshakeButton, handleDrinkOnClick } from "./event.js";
 import { generateIndexHTML, generateDetailsPageHTML } from "./dom.js";
 
 loadPage();
 export async function loadPage() {
-  await getRandomDrink()
-    .then((res) => {
-      const randomDrinkObject = mapRawCocktailData(res);
-      generateIndexHTML(randomDrinkObject);
+  const randomDrink = await getRandomDrink();
+  const randomDrinkObject = mapRawCocktailData(randomDrink);
+  generateIndexHTML(randomDrinkObject);
 
-      return randomDrinkObject;
-    })
-    .then((randomDrinkObject) => {
-      const reshakeButton = document.querySelector(".reshake-button");
-      reshakeButton.addEventListener("click", handleReshakeButton);
+  const reshakeButton = document.querySelector(".reshake-button");
+  reshakeButton.addEventListener("click", handleReshakeButton);
 
-      getDrink(randomDrinkObject.id).then((res) => {
-        const drinkObject = mapRawCocktailData(res);
-        generateDetailsPageHTML(drinkObject);
-      });
-    });
+  const titleButton = document.getElementById("title-button");
+  titleButton.addEventListener("click", async () => {
+    await handleDrinkOnClick(randomDrinkObject.id);
+  });
+
+  const imageButton = document.querySelector(".img-button");
+  imageButton.addEventListener("click", async () => {
+    await handleDrinkOnClick(randomDrinkObject.id);
+  });
 }

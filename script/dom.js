@@ -16,8 +16,8 @@ export function generateIndexHTML(drinkObject) {
           </span>
         </div>
         <div class="random-drink-card">
-          <h3>${drinkObject.name}</h3>
-          <img class="drink-img" src="${drinkObject.thumbnail}" alt="random-drink-image" />
+          <h3 id="title-button">${drinkObject.name}</h3>
+          <img class="random-drink-img img-button" src="${drinkObject.thumbnail}" alt="random-drink-image" />
           <div class="actions">
             <span class="material-symbols-outlined heart"> favorite </span>
             <span class="material-symbols-outlined share"> ios_share </span>
@@ -68,6 +68,7 @@ export function generateDetailsPageHTML(drinkObject) {
   `;
   detailsPage.innerHTML = detailPageHTML;
 
+  console.log(drinkObject);
   generateDrinkTags(drinkObject);
   generateIngredientsCard(drinkObject.ingredients);
   generateInstructions(drinkObject.instructions);
