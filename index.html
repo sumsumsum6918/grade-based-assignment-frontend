@@ -26,10 +26,16 @@
         Drink <br />
         Tonight
       </h1>
-      <div class="search-bar-container">
+      <form id="search-form" action="/submit" class="search-bar-container">
         <input class="search-bar" type="text" placeholder="search" />
-        <span class="material-symbols-outlined cocktail"> local_bar </span>
-      </div>
+        <span
+          class="material-symbols-outlined cocktail"
+          role="button"
+          id="search-button"
+        >
+          local_bar
+        </span>
+      </form>
       <div class="fav-cart">
         <span class="material-symbols-outlined heart"> favorite </span>
         <span></span>
