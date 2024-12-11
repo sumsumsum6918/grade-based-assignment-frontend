@@ -41,10 +41,12 @@ body {
 .random-drink-card,
 .detail-drink-card {
   border-radius: 0.75rem;
-  padding: 2rem 3rem;
   background-color: var(--creamybeige);
-  width: 70%;
   margin-bottom: 2rem;
+}
+.random-drink-card {
+  width: 70%;
+  padding: 2rem 3rem;
 }
 h3 {
   text-align: center;

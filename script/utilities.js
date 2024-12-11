@@ -15,7 +15,7 @@ export function mapRawCocktailData(rawCocktial) {
     alcoholic: rawCocktial.strAlcoholic === "Alcoholic",
     glass: rawCocktial.strGlass,
     instructions: rawCocktial.strInstructions
-      .match(/[^.]+/g)
+      .match(/[^.]+[.]/g)
       .map((sentence) => sentence.trim()),
     thumbnail: rawCocktial.strDrinkThumb,
     ingredients: Array.from({ length: 15 })

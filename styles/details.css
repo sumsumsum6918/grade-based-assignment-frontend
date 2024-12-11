@@ -1,4 +1,38 @@
 .details-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-inline: 3rem;
+}
+.detail-drink-card {
+  padding: 1.5rem 2rem;
+}
+.details-tag-container {
+  margin-bottom: 1rem;
+}
+.details-tag-container span {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: var(--burgundy);
+  cursor: pointer;
+}
+.detail-actions span {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+.detail-actions {
+  margin-bottom: 0.5rem;
+}
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.ingredient-card img {
+  object-fit: cover;
+}
+.instructions-container p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
