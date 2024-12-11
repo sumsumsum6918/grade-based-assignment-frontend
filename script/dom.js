@@ -46,7 +46,7 @@ export function generateDetailsPageHTML(drinkObject) {
                 <span class="material-symbols-outlined heart"> favorite </span>
                 <span class="material-symbols-outlined share"> ios_share </span>
               </div>
-              <div class="detail-drink-glass">Glass Type: Cocktail Glass</div>
+              <div class="detail-drink-glass">Glass Type: ${drinkObject.glass}</div>
             </div>
           </article>
         </div>
@@ -82,6 +82,25 @@ export function generateDetailsPageHTML(drinkObject) {
   detailsPage.innerHTML = detailPageHTML;
 
   generateDrinkTags(drinkObject);
+  generateIngredientsCard(drinkObject.ingredients);
+}
+function generateIngredientsCard(ingredientsArray) {
+  console.log(ingredientsArray);
+  let ingredientsHTML = "";
+
+  ingredientsArray.forEach((i) => {
+    ingredientsHTML += `
+    <div class="ingredient-card">
+      <img src="https://www.thecocktaildb.com/images/ingredients/${
+        i.ingredient
+      }-Small.png" alt="ingredient" />
+      <span class="ingredient-amount">${i.measure + " " + i.ingredient}</span>
+    </div>
+`;
+  });
+
+  const ingredientGridElement = document.querySelector(".ingredients-grid");
+  ingredientGridElement.innerHTML = ingredientsHTML;
 }
 
 function generateDrinkTags(drinkObject) {

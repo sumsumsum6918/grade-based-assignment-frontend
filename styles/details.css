@@ -18,6 +18,7 @@
 }
 .detail-drink-img {
   width: 100%;
+  margin-bottom: 0.5rem;
 }
 .detail-actions span {
   margin-right: 0.5rem;
@@ -31,9 +32,18 @@
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border: 0.5rem dotted var(--burgundy);
+}
+.ingredient-card {
+  display: flex;
+  align-items: center;
 }
 .ingredient-card img {
   object-fit: cover;
+}
+.ingredient-amount {
+  display: block;
 }
 .instructions-container p {
   font-size: 1.5rem;
