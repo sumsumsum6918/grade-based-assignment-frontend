@@ -31,7 +31,6 @@ export function generateIndexHTML(drinkObject) {
 }
 
 export function generateDetailsPageHTML(drinkObject) {
-  console.log(drinkObject);
   let detailPageHTML = "";
   detailPageHTML = `
     <div class="left-details">
