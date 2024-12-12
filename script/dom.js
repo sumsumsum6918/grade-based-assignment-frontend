@@ -130,3 +130,17 @@ function generateDrinkTags(drinkObject) {
   const drinkTagElement = document.querySelector(".details-tag-container");
   drinkTagElement.innerHTML = tagsHTML;
 }
+
+export function generateFilterHTML(array, type, stringName) {
+  const containerElement = document.querySelector(`.${type}-filter-content`);
+
+  let filterContentHTML = "";
+
+  array.forEach((item) => {
+    filterContentHTML += `
+      <div>${item[stringName]}</div>
+    `;
+  });
+
+  containerElement.innerHTML = filterContentHTML;
+}

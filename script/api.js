@@ -15,3 +15,10 @@ export async function getDrink(drinkId) {
 
   return drinksArray;
 }
+
+export async function getFilter(type) {
+  const response = await fetch(baseURL + `list.php?${type}=list`);
+  const typeObject = await response.json();
+  const typeArray = typeObject.drinks;
+  return typeArray;
+}
