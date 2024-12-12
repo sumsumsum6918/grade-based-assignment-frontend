@@ -1,0 +1,36 @@
+.filter-page {
+  padding-inline: 4rem;
+}
+.filter-title {
+  font-family: "Fredericka the Great";
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+.filter-container {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+}
+.filter-type {
+  margin-right: 1.5rem;
+  padding: 1rem 1.5rem;
+}
+.filter-content {
+  display: flex;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--burgundy);
+}
+.filter-content div {
+  margin-right: 1rem;
+  padding: 1rem 1rem;
+  transition: all 0.15s;
+}
+.filter-content div:hover {
+  background-color: rgba(128, 0, 32, 0.8);
+  color: var(--warmgold);
+}
+.filter-content.active {
+  background-color: var(--burgundy);
+}
