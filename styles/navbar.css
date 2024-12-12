@@ -35,3 +35,12 @@ nav {
   padding: 1rem;
   cursor: pointer;
 }
+.search-container {
+  display: flex;
+  align-items: end;
+}
+.filter {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+}

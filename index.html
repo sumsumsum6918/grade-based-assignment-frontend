@@ -13,12 +13,13 @@
 
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=brightness_empty,favorite,ios_share,local_bar"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=brightness_empty,favorite,ios_share,local_bar,tune"
     />
 
     <link rel="stylesheet" href="styles/index.css" />
     <link rel="stylesheet" href="styles/navbar.css" />
     <link rel="stylesheet" href="styles/details.css" />
+    <link rel="stylesheet" href="styles/filter.css" />
   </head>
   <body>
     <nav>
@@ -26,22 +27,72 @@
         Drink <br />
         Tonight
       </h1>
-      <form id="search-form" action="/submit" class="search-bar-container">
-        <input class="search-bar" type="text" placeholder="search" />
-        <span
-          class="material-symbols-outlined cocktail"
-          role="button"
-          id="search-button"
+      <div class="search-container">
+        <form
+          id="basic-search-form"
+          name="basic-search"
+          action="/submit"
+          class="search-bar-container"
         >
-          local_bar
-        </span>
-      </form>
+          <input
+            id="basic-search"
+            class="search-bar"
+            type="text"
+            placeholder="search"
+          />
+          <span
+            class="material-symbols-outlined cocktail"
+            role="button"
+            id="search-button"
+          >
+            local_bar
+          </span>
+        </form>
+        <span class="material-symbols-outlined filter"> tune </span>
+      </div>
       <div class="fav-cart">
         <span class="material-symbols-outlined heart"> favorite </span>
         <span></span>
       </div>
     </nav>
     <main>
+      <section class="filter-container">
+        <form class="filter-form" id="filter-form">
+          <p class="filter-title">Advance Search</p>
+          <div class="filter-container">
+            <div class="alcoholic-filter">
+              <p class="filter-type">Alcoholic</p>
+              <div class="alcoholic-filter-content">
+                <span value="alcoholic">Alcoholic</span>
+                <span value="">Non-Alcoholic</span>
+              </div>
+            </div>
+
+            <div class="category-dropdown">
+              <p class="filter-type">Category</p>
+              <div class="category-filter-content">
+                <span value="cocktail">Cocktail</span>
+              </div>
+            </div>
+
+            <div class="ingredients-dropdown">
+              <p class="filter-type">Ingredients</p>
+              <div class="ingredients-filter-content">
+                <span value="gin">Gin</span>
+              </div>
+            </div>
+
+            <div class="glass-dropdown">
+              <p class="filter-type">Glass</p>
+              <div class="glass-filter-content">
+                <span value="gin">Highball Glass</span>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="search-results-container"></div>
+      </section>
+
       <section class="random-drink-page"></section>
 
       <section class="details-page"></section>

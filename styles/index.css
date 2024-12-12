@@ -14,7 +14,8 @@
 body {
   background-color: var(--warmgold);
 }
-.cocktail {
+.cocktail,
+filter {
   font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 24;
 }
 .heart-filled,
