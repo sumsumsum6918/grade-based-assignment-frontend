@@ -152,16 +152,14 @@ export function generateSearchResult(resultArray) {
 
   resultArray.forEach((drinkObject) => {
     searchResultsHTML += `
-    <article class="result-drink-container">
-             <div class="result-drink-card">
+             <article class="result-drink-card">
                <h3 class="result-title-button" data-drink-id="${drinkObject.id}">${drinkObject.name}</h3>
                <img class="result-drink-img result-img-button" data-drink-id="${drinkObject.id}" src="${drinkObject.thumbnail}" alt="detail-drink-image" />
                <div class="detail-actions">
                  <span class="material-symbols-outlined heart"> favorite </span>
                  <span class="material-symbols-outlined share"> ios_share </span>
                </div>
-             </div>
-           </article>
+             </article>
    `;
   });
 

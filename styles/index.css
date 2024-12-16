@@ -41,7 +41,8 @@ filter {
 }
 .random-drink-card,
 .result-drink-card,
-.detail-drink-card {
+.detail-drink-card,
+.fav-drink-card {
   border-radius: 0.75rem;
   background-color: var(--creamybeige);
   margin-bottom: 2rem;

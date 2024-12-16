@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="styles/navbar.css" />
     <link rel="stylesheet" href="styles/details.css" />
     <link rel="stylesheet" href="styles/filter.css" />
+    <link rel="stylesheet" href="styles/fav.css" />
   </head>
   <body>
     <nav>
@@ -47,7 +48,9 @@
             local_bar
           </span>
         </form>
-        <span class="material-symbols-outlined filter"> tune </span>
+        <span class="material-symbols-outlined filter filter-button">
+          tune
+        </span>
       </div>
       <div class="fav-cart">
         <span class="material-symbols-outlined heart"> favorite </span>
@@ -55,6 +58,27 @@
       </div>
     </nav>
     <main>
+      <section class="favorite-page">
+        <p class="favorite-title">My Drinks</p>
+        <div class="fav-container">
+          <article class="fav-drink-card">
+            <h3 class="fav-title-button" data-drink-id="${drinkObject.id}">
+              ${drinkObject.name}
+            </h3>
+            <img
+              class="fav-drink-img fav-img-button"
+              data-drink-id="${drinkObject.id}"
+              src="${drinkObject.thumbnail}"
+              alt="detail-drink-image"
+            />
+            <div class="detail-actions">
+              <span class="material-symbols-outlined heart"> favorite </span>
+              <span class="material-symbols-outlined share"> ios_share </span>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section class="filter-page">
         <form class="filter-form" id="filter-form">
           <p class="filter-title">Advance Search</p>

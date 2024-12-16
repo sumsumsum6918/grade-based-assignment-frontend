@@ -20,7 +20,7 @@ searchForm.addEventListener("keydown", (event) => {
   }
 });
 
-// const filterButton = document.querySelector(".filter");
+// const filterButton = document.querySelector(".filter-button");
 // filterButton.addEventListener("click", () => {loadFilterPage()});
 
 export async function loadPage() {
@@ -42,7 +42,7 @@ export async function loadPage() {
   });
 }
 
-loadFilterPage();
+//loadFilterPage();
 async function loadFilterPage() {
   const alcoholType = await getFilter("a");
   const categoryType = await getFilter("c");
