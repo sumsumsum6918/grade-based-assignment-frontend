@@ -22,3 +22,11 @@ export async function getFilter(type) {
   const typeArray = typeObject.drinks;
   return typeArray;
 }
+
+export async function searchByName(cocktailName) {
+  const response = await fetch(baseURL + `search.php?s=${cocktailName}`);
+  const resultsObject = await response.json();
+  const resultArray = resultsObject.drinks;
+
+  return resultArray;
+}

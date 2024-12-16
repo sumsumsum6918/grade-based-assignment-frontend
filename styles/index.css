@@ -40,6 +40,7 @@ filter {
   position: relative;
 }
 .random-drink-card,
+.result-drink-card,
 .detail-drink-card {
   border-radius: 0.75rem;
   background-color: var(--creamybeige);

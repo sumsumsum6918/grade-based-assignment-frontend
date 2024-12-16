@@ -1,5 +1,7 @@
 const indexPage = document.querySelector(".random-drink-page");
 const detailsPage = document.querySelector(".details-page");
+export const searchInput = document.getElementById("basic-search");
+const searchResults = document.querySelector(".search-results-container");
 
 export function generateIndexHTML(drinkObject) {
   let indexPageHTML = "";
@@ -143,4 +145,25 @@ export function generateFilterHTML(array, type, stringName) {
   });
 
   containerElement.innerHTML = filterContentHTML;
+}
+
+export function generateSearchResult(resultArray) {
+  let searchResultsHTML = "";
+
+  resultArray.forEach((drinkObject) => {
+    searchResultsHTML += `
+    <article class="result-drink-container">
+             <div class="result-drink-card">
+               <h3>${drinkObject.name}</h3>
+               <img class="result-drink-img" src="${drinkObject.thumbnail}" alt="detail-drink-image" />
+               <div class="detail-actions">
+                 <span class="material-symbols-outlined heart"> favorite </span>
+                 <span class="material-symbols-outlined share"> ios_share </span>
+               </div>
+             </div>
+           </article>
+   `;
+  });
+
+  searchResults.innerHTML = searchResultsHTML;
 }
