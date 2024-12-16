@@ -37,4 +37,5 @@ async function loadFilterPage() {
   generateFilterHTML(alcoholType, "alcoholic", "strAlcoholic");
   generateFilterHTML(categoryType, "category", "strCategory");
   generateFilterHTML(ingredientType, "ingredients", "strIngredient1");
+  generateFilterHTML(glassType, "glass", "strGlass");
 }
