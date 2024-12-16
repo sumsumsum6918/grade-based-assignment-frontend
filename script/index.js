@@ -7,10 +7,11 @@ import {
 } from "./event.js";
 import { generateIndexHTML, generateFilterHTML } from "./dom.js";
 
-loadPage();
+//loadPage();
 
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", handleSearchButton);
+
 const searchForm = document.getElementById("basic-search-form");
 searchForm.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
@@ -18,6 +19,9 @@ searchForm.addEventListener("keydown", (event) => {
     handleSearchButton();
   }
 });
+
+// const filterButton = document.querySelector(".filter");
+// filterButton.addEventListener("click", () => {loadFilterPage()});
 
 export async function loadPage() {
   const randomDrink = await getRandomDrink();

@@ -1,12 +1,13 @@
 .filter-page {
   padding-inline: 3rem;
 }
-.filter-title {
+.filter-title,
+.search-title {
   font-family: "Fredericka the Great";
   font-size: 2rem;
   font-weight: bold;
   color: var(--charcoal);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 .filter-container {
   display: grid;

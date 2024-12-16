@@ -29,5 +29,27 @@ export async function handleSearchButton(params) {
     });
 
     generateSearchResult(searchResultArray);
+
+    const resultsTitleButtons = document.querySelectorAll(
+      ".result-title-button"
+    );
+
+    resultsTitleButtons.forEach((button) => {
+      button.addEventListener("click", async () => {
+        const { drinkId } = button.dataset;
+        console.log(drinkId);
+        await handleDrinkOnClick(drinkId);
+      });
+    });
+
+    const resultsImageButtons = document.querySelectorAll(".result-img-button");
+
+    resultsImageButtons.forEach((button) => {
+      button.addEventListener("click", async () => {
+        const { drinkId } = button.dataset;
+        console.log(drinkId);
+        await handleDrinkOnClick(drinkId);
+      });
+    });
   }
 }
