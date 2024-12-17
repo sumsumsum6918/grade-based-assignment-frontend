@@ -1,4 +1,4 @@
-import { loadPage, searchResultArray } from "../script/index.js";
+import { loadPage } from "../script/index.js";
 import { getDrink, searchByName } from "./api.js";
 import { mapRawCocktailData } from "./utilities.js";
 import {
@@ -7,6 +7,7 @@ import {
   generateSearchResult,
 } from "./dom.js";
 import { addDrinkToFav, removeDrinkFromFav } from "./favCart.js";
+import { clearFilters, getFilters } from "./filters.js";
 
 export async function handleReshakeButton() {
   await loadPage();
@@ -21,15 +22,14 @@ export async function handleDrinkOnClick(drinkId) {
 export async function handleSearchButton() {
   if (searchInput.value) {
     const searchResult = await searchByName(searchInput.value);
+    const filteredSearchResult = searchResult.filter((drink) =>
+      getFilters().every((fil) => Object.values(drink).includes(fil))
+    );
 
-    searchResultArray.length = 0;
-
-    searchResult.forEach((drink) => {
-      const drinkDetail = mapRawCocktailData(drink);
-      searchResultArray.push(drinkDetail);
-    });
-
-    generateSearchResult(searchResultArray);
+    const drinkDetails = filteredSearchResult.map((drink) =>
+      mapRawCocktailData(drink)
+    );
+    generateSearchResult(drinkDetails);
 
     const resultsTitleButtons = document.querySelectorAll(
       ".result-title-button"

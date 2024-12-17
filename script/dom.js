@@ -148,12 +148,13 @@ function generateDrinkTags(drinkObject) {
 
 export function generateFilterHTML(array, type, stringName) {
   const containerElement = document.querySelector(`.${type}-filter-content`);
+  const strings = array.map((element) => element[stringName]).sort();
 
   let filterContentHTML = "";
 
-  array.forEach((item) => {
+  strings.forEach((string) => {
     filterContentHTML += `
-      <div>${item[stringName]}</div>
+      <div class="filter-element" data-filter-string="${string}">${string}</div>
     `;
   });
 

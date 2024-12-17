@@ -9,30 +9,27 @@ import {
 import {
   generateIndexHTML,
   generateFilterHTML,
-  generateSearchResult,
   generateFavPageHTML,
 } from "./dom.js";
 import { addDrinkToFav, removeDrinkFromFav } from "./favCart.js";
-
-export let searchResultArray = [];
+import { toggleFilter, clearFilters } from "./filters.js";
 
 loadPage();
 
 const searchButton = document.getElementById("search-button");
-searchButton.addEventListener("click", handleSearchButton);
+searchButton.addEventListener("click", () => {
+  clearFilters();
+  handleSearchButton();
+});
 
 const searchForm = document.getElementById("basic-search-form");
 searchForm.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
+    clearFilters();
     handleSearchButton();
   }
 });
-
-// const filterButton = document.querySelector(".filter-button");
-// filterButton.addEventListener("click", () => {
-//searchResultArray.length = 0;
-// loadFilterPage()});
 
 export async function loadPage() {
   const randomDrink = await getRandomDrink();
@@ -72,26 +69,20 @@ async function loadFilterPage() {
   const categoryType = await getFilter("c");
   const ingredientType = await getFilter("i");
   const glassType = await getFilter("g");
+  const alcoholicType = await getFilter("a");
 
   generateFilterHTML(categoryType, "category", "strCategory");
   generateFilterHTML(ingredientType, "ingredients", "strIngredient1");
   generateFilterHTML(glassType, "glass", "strGlass");
+  generateFilterHTML(alcoholicType, "alcoholic", "strAlcoholic");
 
-  const alcoholFilterContent = document.querySelector(
-    ".alcoholic-filter-content"
-  );
-  const alcoholList = alcoholFilterContent.querySelectorAll("div");
-
-  alcoholList.forEach((type) => {
-    type.addEventListener("click", () => {
-      const isAlcoholic = type.dataset.alcoholic === "true";
-
-      if (searchResultArray.length > 0) {
-        const filteredResult = searchResultArray.filter(
-          (drink) => drink.alcoholic == isAlcoholic
-        );
-        generateSearchResult(filteredResult);
-      }
+  const filterElements = document.querySelectorAll(".filter-element");
+  filterElements.forEach((filterElement) => {
+    filterElement.addEventListener("click", () => {
+      filterElement.classList.toggle("active");
+      const { filterString } = filterElement.dataset;
+      toggleFilter(filterString);
+      handleSearchButton();
     });
   });
 }
