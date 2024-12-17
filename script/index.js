@@ -4,16 +4,19 @@ import {
   handleReshakeButton,
   handleDrinkOnClick,
   handleSearchButton,
+  handleDrinkCardPress,
 } from "./event.js";
 import {
   generateIndexHTML,
   generateFilterHTML,
   generateSearchResult,
+  generateFavPageHTML,
 } from "./dom.js";
+import { addDrinkToFav } from "./favCart.js";
 
 export let searchResultArray = [];
 
-//loadPage();
+loadPage();
 
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", handleSearchButton);
@@ -48,6 +51,15 @@ export async function loadPage() {
   imageButton.addEventListener("click", async () => {
     await handleDrinkOnClick(randomDrinkObject.id);
   });
+
+  const favButton = document.querySelector(".heart-button");
+  favButton.addEventListener("click", () => {
+    if (favButton.classList.contains("heart")) {
+      favButton.classList.add("heart-filled");
+      favButton.classList.remove("heart");
+      addDrinkToFav(randomDrinkObject);
+    }
+  });
 }
 
 loadFilterPage();
@@ -75,6 +87,24 @@ async function loadFilterPage() {
         );
         generateSearchResult(filteredResult);
       }
+    });
+  });
+}
+loadFavPage();
+function loadFavPage() {
+  generateFavPageHTML();
+
+  const favTitleButton = document.querySelectorAll(".fav-title-button");
+  favTitleButton.forEach((button) => {
+    button.addEventListener("click", async () => {
+      handleDrinkCardPress(button);
+    });
+  });
+
+  const favImgButton = document.querySelectorAll(".fav-img-button");
+  favImgButton.forEach((button) => {
+    button.addEventListener("click", async () => {
+      handleDrinkCardPress(button);
     });
   });
 }

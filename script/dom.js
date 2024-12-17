@@ -1,3 +1,5 @@
+import { favCart } from "./favCart.js";
+
 const indexPage = document.querySelector(".random-drink-page");
 const detailsPage = document.querySelector(".details-page");
 export const searchInput = document.getElementById("basic-search");
@@ -21,7 +23,7 @@ export function generateIndexHTML(drinkObject) {
           <h3 id="title-button">${drinkObject.name}</h3>
           <img class="random-drink-img img-button" src="${drinkObject.thumbnail}" alt="random-drink-image" />
           <div class="actions">
-            <span class="material-symbols-outlined heart"> favorite </span>
+            <span class="material-symbols-outlined heart heart-button"> favorite </span>
             <span class="material-symbols-outlined share"> ios_share </span>
           </div>
         </div>
@@ -167,4 +169,30 @@ export function generateSearchResult(resultArray) {
   }
 
   searchResults.innerHTML = searchResultsHTML;
+}
+
+export function generateFavPageHTML() {
+  let favDrinkCardHTML = "";
+  favCart.forEach((drink) => {
+    favDrinkCardHTML += `
+    <article class="fav-drink-card">
+              <h3 class="fav-title-button" data-drink-id="${drink.id}">
+                ${drink.name}
+              </h3>
+              <img
+                class="fav-drink-img fav-img-button"
+                data-drink-id="${drink.id}"
+                src="${drink.thumbnail}"
+                alt="detail-drink-image"
+              />
+              <div class="detail-actions">
+                <span class="material-symbols-outlined heart"> favorite </span>
+                <span class="material-symbols-outlined share"> ios_share </span>
+              </div>
+            </article>
+   `;
+  });
+
+  const favContainer = document.querySelector(".fav-container");
+  favContainer.innerHTML = favDrinkCardHTML;
 }

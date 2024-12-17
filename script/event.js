@@ -36,9 +36,7 @@ export async function handleSearchButton() {
 
     resultsTitleButtons.forEach((button) => {
       button.addEventListener("click", async () => {
-        const { drinkId } = button.dataset;
-        console.log(drinkId);
-        await handleDrinkOnClick(drinkId);
+        handleDrinkCardPress(button);
       });
     });
 
@@ -46,10 +44,13 @@ export async function handleSearchButton() {
 
     resultsImageButtons.forEach((button) => {
       button.addEventListener("click", async () => {
-        const { drinkId } = button.dataset;
-        console.log(drinkId);
-        await handleDrinkOnClick(drinkId);
+        handleDrinkCardPress(button);
       });
     });
   }
+}
+
+export async function handleDrinkCardPress(button) {
+  const { drinkId } = button.dataset;
+  await handleDrinkOnClick(drinkId);
 }
