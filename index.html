@@ -68,7 +68,7 @@
             <img
               class="fav-drink-img fav-img-button"
               data-drink-id="${drinkObject.id}"
-              src="${drinkObject.thumbnail}"
+              src=""
               alt="detail-drink-image"
             />
             <div class="detail-actions">
@@ -85,7 +85,10 @@
 
           <div class="alcoholic-filter filter-container">
             <p class="filter-type">Alcoholic</p>
-            <div class="alcoholic-filter-content filter-content"></div>
+            <div class="alcoholic-filter-content filter-content">
+              <div data-alcoholic="true">Alcoholic</div>
+              <div data-alcoholic="false">Non-Alcoholic</div>
+            </div>
           </div>
 
           <div class="category-filter filter-container">

@@ -5,7 +5,13 @@ import {
   handleDrinkOnClick,
   handleSearchButton,
 } from "./event.js";
-import { generateIndexHTML, generateFilterHTML } from "./dom.js";
+import {
+  generateIndexHTML,
+  generateFilterHTML,
+  generateSearchResult,
+} from "./dom.js";
+
+export let searchResultArray = [];
 
 //loadPage();
 
@@ -21,7 +27,9 @@ searchForm.addEventListener("keydown", (event) => {
 });
 
 // const filterButton = document.querySelector(".filter-button");
-// filterButton.addEventListener("click", () => {loadFilterPage()});
+// filterButton.addEventListener("click", () => {
+//searchResultArray.length = 0;
+// loadFilterPage()});
 
 export async function loadPage() {
   const randomDrink = await getRandomDrink();
@@ -42,14 +50,12 @@ export async function loadPage() {
   });
 }
 
-//loadFilterPage();
+loadFilterPage();
 async function loadFilterPage() {
-  const alcoholType = await getFilter("a");
   const categoryType = await getFilter("c");
   const ingredientType = await getFilter("i");
   const glassType = await getFilter("g");
 
-  generateFilterHTML(alcoholType, "alcoholic", "strAlcoholic");
   generateFilterHTML(categoryType, "category", "strCategory");
   generateFilterHTML(ingredientType, "ingredients", "strIngredient1");
   generateFilterHTML(glassType, "glass", "strGlass");
@@ -61,7 +67,14 @@ async function loadFilterPage() {
 
   alcoholList.forEach((type) => {
     type.addEventListener("click", () => {
-      console.log(type.innerText);
+      const isAlcoholic = type.dataset.alcoholic === "true";
+
+      if (searchResultArray.length > 0) {
+        const filteredResult = searchResultArray.filter(
+          (drink) => drink.alcoholic == isAlcoholic
+        );
+        generateSearchResult(filteredResult);
+      }
     });
   });
 }

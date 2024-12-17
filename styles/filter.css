@@ -35,8 +35,9 @@
   background-color: rgba(128, 0, 32, 0.8);
   color: var(--warmgold);
 }
-.filter-content.active {
+.filter-content .active {
   background-color: var(--burgundy);
+  color: var(--warmgold);
 }
 .filter-form {
   margin-bottom: 4rem;

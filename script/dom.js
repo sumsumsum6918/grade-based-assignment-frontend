@@ -162,6 +162,9 @@ export function generateSearchResult(resultArray) {
              </article>
    `;
   });
+  if (!searchResultsHTML) {
+    searchResultsHTML = "<p>No Matching Results</p>";
+  }
 
   searchResults.innerHTML = searchResultsHTML;
 }

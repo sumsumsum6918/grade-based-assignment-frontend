@@ -1,4 +1,4 @@
-import { loadPage } from "../script/index.js";
+import { loadPage, searchResultArray } from "../script/index.js";
 import { getDrink, searchByName } from "./api.js";
 import { mapRawCocktailData } from "./utilities.js";
 import {
@@ -17,11 +17,11 @@ export async function handleDrinkOnClick(drinkId) {
   generateDetailsPageHTML(drinkObject);
 }
 
-export async function handleSearchButton(params) {
+export async function handleSearchButton() {
   if (searchInput.value) {
-    const searchResultArray = [];
-
     const searchResult = await searchByName(searchInput.value);
+
+    searchResultArray.length = 0;
 
     searchResult.forEach((drink) => {
       const drinkDetail = mapRawCocktailData(drink);
