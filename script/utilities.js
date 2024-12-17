@@ -1,3 +1,5 @@
+import { favCart } from "./favCart.js";
+
 /**
  * Då json-objektet som representerar en cocktail är lite
  * halvtokigt utformat av de som utvecklat API:et, så har ni
@@ -27,4 +29,8 @@ export function mapRawCocktailData(rawCocktial) {
       }))
       .filter((item) => item.ingredient),
   };
+}
+
+export function checkIfFaved(drinkId) {
+  return favCart.some((drink) => drink.id === drinkId);
 }

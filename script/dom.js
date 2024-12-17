@@ -1,4 +1,5 @@
 import { favCart } from "./favCart.js";
+import { checkIfFaved } from "./utilities.js";
 
 const indexPage = document.querySelector(".random-drink-page");
 const detailsPage = document.querySelector(".details-page");
@@ -21,9 +22,13 @@ export function generateIndexHTML(drinkObject) {
         </div>
         <div class="random-drink-card">
           <h3 id="title-button">${drinkObject.name}</h3>
-          <img class="random-drink-img img-button" src="${drinkObject.thumbnail}" alt="random-drink-image" />
+          <img class="random-drink-img img-button" src="${
+            drinkObject.thumbnail
+          }" alt="random-drink-image" />
           <div class="actions">
-            <span class="material-symbols-outlined heart heart-button"> favorite </span>
+            <span class="material-symbols-outlined  ${
+              checkIfFaved(drinkObject.id) ? "heart-filled" : "heart"
+            } heart-button"> favorite </span>
             <span class="material-symbols-outlined share"> ios_share </span>
           </div>
         </div>
@@ -44,12 +49,18 @@ export function generateDetailsPageHTML(drinkObject) {
           <article class="detail-drink-container">
             <div class="detail-drink-card">
               <h3>${drinkObject.name}</h3>
-              <img class="detail-drink-img" src="${drinkObject.thumbnail}" alt="detail-drink-image" />
+              <img class="detail-drink-img" src="${
+                drinkObject.thumbnail
+              }" alt="detail-drink-image" />
               <div class="detail-actions">
-                <span class="material-symbols-outlined heart"> favorite </span>
+                <span class="material-symbols-outlined 
+                 ${checkIfFaved(drinkObject.id) ? "heart-filled" : "heart"}
+                "> favorite </span>
                 <span class="material-symbols-outlined share"> ios_share </span>
               </div>
-              <div class="detail-drink-glass">Glass Type: ${drinkObject.glass}</div>
+              <div class="detail-drink-glass">Glass Type: ${
+                drinkObject.glass
+              }</div>
             </div>
           </article>
         </div>
@@ -155,10 +166,16 @@ export function generateSearchResult(resultArray) {
   resultArray.forEach((drinkObject) => {
     searchResultsHTML += `
              <article class="result-drink-card">
-               <h3 class="result-title-button" data-drink-id="${drinkObject.id}">${drinkObject.name}</h3>
-               <img class="result-drink-img result-img-button" data-drink-id="${drinkObject.id}" src="${drinkObject.thumbnail}" alt="detail-drink-image" />
+               <h3 class="result-title-button" data-drink-id="${
+                 drinkObject.id
+               }">${drinkObject.name}</h3>
+               <img class="result-drink-img result-img-button" data-drink-id="${
+                 drinkObject.id
+               }" src="${drinkObject.thumbnail}" alt="detail-drink-image" />
                <div class="detail-actions">
-                 <span class="material-symbols-outlined heart"> favorite </span>
+                 <span class="material-symbols-outlined 
+                  ${checkIfFaved(drinkObject.id) ? "heart-filled" : "heart"}
+                 "> favorite </span>
                  <span class="material-symbols-outlined share"> ios_share </span>
                </div>
              </article>
@@ -186,7 +203,10 @@ export function generateFavPageHTML() {
                 alt="detail-drink-image"
               />
               <div class="detail-actions">
-                <span class="material-symbols-outlined heart"> favorite </span>
+                <span class="material-symbols-outlined 
+                ${
+                  checkIfFaved(drink.id) ? "heart-filled" : "heart"
+                }"> favorite </span>
                 <span class="material-symbols-outlined share"> ios_share </span>
               </div>
             </article>
