@@ -28,7 +28,7 @@ export function generateIndexHTML(drinkObject) {
           <div class="actions">
             <span class="material-symbols-outlined  ${
               checkIfFaved(drinkObject.id) ? "heart-filled" : "heart"
-            } heart-button"> favorite </span>
+            } random-heart-button"> favorite </span>
             <span class="material-symbols-outlined share"> ios_share </span>
           </div>
         </div>
@@ -173,7 +173,9 @@ export function generateSearchResult(resultArray) {
                  drinkObject.id
                }" src="${drinkObject.thumbnail}" alt="detail-drink-image" />
                <div class="detail-actions">
-                 <span class="material-symbols-outlined 
+                 <span data-drink-id="${
+                   drinkObject.id
+                 }" class="material-symbols-outlined search-heart-button
                   ${checkIfFaved(drinkObject.id) ? "heart-filled" : "heart"}
                  "> favorite </span>
                  <span class="material-symbols-outlined share"> ios_share </span>
@@ -203,10 +205,10 @@ export function generateFavPageHTML() {
                 alt="detail-drink-image"
               />
               <div class="detail-actions">
-                <span class="material-symbols-outlined 
+                <span class="material-symbols-outlined faved-heart-button
                 ${
                   checkIfFaved(drink.id) ? "heart-filled" : "heart"
-                }"> favorite </span>
+                }" data-drink-id="${drink.id}"> favorite </span>
                 <span class="material-symbols-outlined share"> ios_share </span>
               </div>
             </article>

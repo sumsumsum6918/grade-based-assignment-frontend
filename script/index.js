@@ -12,7 +12,7 @@ import {
   generateSearchResult,
   generateFavPageHTML,
 } from "./dom.js";
-import { addDrinkToFav } from "./favCart.js";
+import { addDrinkToFav, removeDrinkFromFav } from "./favCart.js";
 
 export let searchResultArray = [];
 
@@ -52,12 +52,17 @@ export async function loadPage() {
     await handleDrinkOnClick(randomDrinkObject.id);
   });
 
-  const favButton = document.querySelector(".heart-button");
+  const favButton = document.querySelector(".random-heart-button");
   favButton.addEventListener("click", () => {
     if (favButton.classList.contains("heart")) {
       favButton.classList.add("heart-filled");
       favButton.classList.remove("heart");
       addDrinkToFav(randomDrinkObject);
+    } else if (favButton.classList.contains("heart-filled")) {
+      favButton.classList.remove("heart-filled");
+      favButton.classList.add("heart");
+
+      removeDrinkFromFav(randomDrinkObject.id);
     }
   });
 }
@@ -90,6 +95,7 @@ async function loadFilterPage() {
     });
   });
 }
+
 loadFavPage();
 function loadFavPage() {
   generateFavPageHTML();
@@ -105,6 +111,29 @@ function loadFavPage() {
   favImgButton.forEach((button) => {
     button.addEventListener("click", async () => {
       handleDrinkCardPress(button);
+    });
+  });
+
+  const favbuttons = document.querySelectorAll(".faved-heart-button");
+  favbuttons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      if (button.classList.contains("heart")) {
+        button.classList.add("heart-filled");
+        button.classList.remove("heart");
+
+        const { drinkId } = button.dataset;
+        const drinksArray = await getDrink(drinkId);
+        const drinkObject = mapRawCocktailData(drinksArray);
+        addDrinkToFav(drinkObject);
+      } else if (button.classList.contains("heart-filled")) {
+        button.classList.remove("heart-filled");
+        button.classList.add("heart");
+
+        const { drinkId } = button.dataset;
+        removeDrinkFromFav(drinkId);
+      }
+
+      loadFavPage();
     });
   });
 }

@@ -6,6 +6,7 @@ import {
   searchInput,
   generateSearchResult,
 } from "./dom.js";
+import { addDrinkToFav, removeDrinkFromFav } from "./favCart.js";
 
 export async function handleReshakeButton() {
   await loadPage();
@@ -48,6 +49,27 @@ export async function handleSearchButton() {
       });
     });
   }
+
+  const favButtons = document.querySelectorAll(".search-heart-button");
+  favButtons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      if (button.classList.contains("heart")) {
+        button.classList.add("heart-filled");
+        button.classList.remove("heart");
+
+        const { drinkId } = button.dataset;
+        const drinksArray = await getDrink(drinkId);
+        const drinkObject = mapRawCocktailData(drinksArray);
+        addDrinkToFav(drinkObject);
+      } else if (button.classList.contains("heart-filled")) {
+        button.classList.remove("heart-filled");
+        button.classList.add("heart");
+
+        const { drinkId } = button.dataset;
+        removeDrinkFromFav(drinkId);
+      }
+    });
+  });
 }
 
 export async function handleDrinkCardPress(button) {
