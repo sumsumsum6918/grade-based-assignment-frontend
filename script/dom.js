@@ -1,8 +1,18 @@
 import { favCart } from "./favCart.js";
 import { checkIfFaved } from "./utilities.js";
 
-const indexPage = document.querySelector(".random-drink-page");
-const detailsPage = document.querySelector(".details-page");
+const indexPage = document.querySelector("#random-drink-page");
+const detailsPage = document.querySelector("#details-page");
+const filterPage = document.querySelector("#filter-page");
+const favoritePage = document.querySelector("#favorite-page");
+
+const pages = {
+  index: indexPage,
+  details: detailsPage,
+  filter: filterPage,
+  favorite: favoritePage,
+};
+
 export const searchInput = document.getElementById("basic-search");
 const searchResults = document.querySelector(".search-results-container");
 
@@ -218,4 +228,11 @@ export function generateFavPageHTML() {
 
   const favContainer = document.querySelector(".fav-container");
   favContainer.innerHTML = favDrinkCardHTML;
+}
+
+export function goToPage(pageId) {
+  Object.entries(pages).forEach(([key, page]) => {
+    if (key === pageId) page.hidden = false;
+    else page.hidden = true;
+  });
 }

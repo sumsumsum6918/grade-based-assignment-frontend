@@ -10,6 +10,7 @@ import {
   generateIndexHTML,
   generateFilterHTML,
   generateFavPageHTML,
+  goToPage,
 } from "./dom.js";
 import { addDrinkToFav, removeDrinkFromFav } from "./favCart.js";
 import { toggleFilter, clearFilters } from "./filters.js";
@@ -20,6 +21,7 @@ const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", () => {
   clearFilters();
   handleSearchButton();
+  goToPage("filter");
 });
 
 const searchForm = document.getElementById("basic-search-form");
@@ -30,6 +32,9 @@ searchForm.addEventListener("keydown", (event) => {
     handleSearchButton();
   }
 });
+
+const filterButton = document.querySelector(".filter-button");
+filterButton.addEventListener("click", () => {});
 
 export async function loadPage() {
   const randomDrink = await getRandomDrink();
@@ -64,7 +69,6 @@ export async function loadPage() {
   });
 }
 
-loadFilterPage();
 async function loadFilterPage() {
   const categoryType = await getFilter("c");
   const ingredientType = await getFilter("i");
@@ -87,7 +91,6 @@ async function loadFilterPage() {
   });
 }
 
-loadFavPage();
 function loadFavPage() {
   generateFavPageHTML();
 
