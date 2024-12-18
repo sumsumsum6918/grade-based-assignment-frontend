@@ -31,18 +31,18 @@ filter {
 .share {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
-
+.filter {
+  font-size: 2rem;
+}
 #random-drink-page,
 .random-drink-card {
   display: flex;
   flex-direction: column;
 }
 #random-drink-page {
-  padding-top: 4rem;
   align-items: center;
   position: relative;
 }
-.random-drink-card,
 .result-drink-card,
 .detail-drink-card,
 .fav-drink-card {
@@ -51,8 +51,11 @@ filter {
   margin-bottom: 2rem;
 }
 .random-drink-card {
-  width: 70%;
+  width: 40%;
   padding: 2rem 3rem;
+  border-radius: 0.75rem;
+  background-color: var(--creamybeige);
+  margin-bottom: 1rem;
 }
 h3 {
   text-align: center;
@@ -92,8 +95,8 @@ h3 {
 }
 .badge-container {
   position: absolute;
-  top: 0;
-  left: 8vw;
+  top: -8vh;
+  left: 24vw;
 }
 .star {
   font-size: 10rem;
@@ -111,5 +114,13 @@ h3 {
   line-height: 1.7rem;
 }
 .hide {
-  display: none;
+  display: none !important;
+}
+.main-page-button {
+  cursor: pointer;
+}
+#search-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }

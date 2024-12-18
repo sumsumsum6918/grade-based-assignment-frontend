@@ -1,5 +1,7 @@
+import { getDrink } from "./api.js";
+import { handleDrinkCardPress, handleHeartButtonClick } from "./event.js";
 import { favCart } from "./favCart.js";
-import { checkIfFaved } from "./utilities.js";
+import { checkIfFaved, mapRawCocktailData } from "./utilities.js";
 
 const indexPage = document.querySelector("#random-drink-page");
 const detailsPage = document.querySelector("#details-page");
@@ -63,7 +65,7 @@ export function generateDetailsPageHTML(drinkObject) {
                 drinkObject.thumbnail
               }" alt="detail-drink-image" />
               <div class="detail-actions">
-                <span class="material-symbols-outlined 
+                <span class="material-symbols-outlined detailed-heart-button
                  ${checkIfFaved(drinkObject.id) ? "heart-filled" : "heart"}
                 "> favorite </span>
                 <span class="material-symbols-outlined share"> ios_share </span>
@@ -97,6 +99,11 @@ export function generateDetailsPageHTML(drinkObject) {
   generateDrinkTags(drinkObject);
   generateIngredientsCard(drinkObject.ingredients);
   generateInstructions(drinkObject.instructions);
+
+  const favButton = document.querySelector(".detailed-heart-button");
+  favButton.addEventListener("click", () => {
+    handleHeartButtonClick(favButton, drinkObject);
+  });
 }
 
 function generateInstructions(instructions) {
@@ -171,10 +178,13 @@ export function generateFilterHTML(array, type, stringName) {
   containerElement.innerHTML = filterContentHTML;
 }
 
-export function generateSearchResult(resultArray) {
+export function generateSearchResult(resultArray, page = 0) {
   let searchResultsHTML = "";
+  const resultsPerPage = 8;
+  const startIndex = page * resultsPerPage;
+  const endIndex = startIndex + resultsPerPage;
 
-  resultArray.forEach((drinkObject) => {
+  resultArray.slice(startIndex, endIndex).forEach((drinkObject) => {
     searchResultsHTML += `
              <article class="result-drink-card">
                <h3 class="result-title-button" data-drink-id="${
@@ -197,8 +207,60 @@ export function generateSearchResult(resultArray) {
   if (!searchResultsHTML) {
     searchResultsHTML = "<p>No Matching Results</p>";
   }
+  const paginationContainer = document.querySelector(".pagination-container");
+  paginationContainer.innerHTML = "";
 
+  if (resultArray.length > 8) {
+    const numPages = Math.ceil(resultArray.length / 8);
+    let paginationHTML = `
+        ${Array(numPages)
+          .fill(null)
+          .map(
+            (_, i) =>
+              `<button class="pagination-button" data-page-number="${i}">${
+                i + 1
+              }</button>`
+          )
+          .join("")}
+    `;
+
+    paginationContainer.innerHTML = paginationHTML;
+  }
   searchResults.innerHTML = searchResultsHTML;
+
+  const paginationButtons = document.querySelectorAll(".pagination-button");
+  paginationButtons.forEach((paginationButton) =>
+    paginationButton.addEventListener("click", () => {
+      const { pageNumber } = paginationButton.dataset;
+      generateSearchResult(resultArray, pageNumber);
+    })
+  );
+
+  const resultsTitleButtons = document.querySelectorAll(".result-title-button");
+
+  resultsTitleButtons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      handleDrinkCardPress(button);
+    });
+  });
+
+  const resultsImageButtons = document.querySelectorAll(".result-img-button");
+
+  resultsImageButtons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      handleDrinkCardPress(button);
+    });
+  });
+
+  const favButtons = document.querySelectorAll(".search-heart-button");
+  favButtons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      const { drinkId } = button.dataset;
+      const drinksArray = await getDrink(drinkId);
+      const drinkObject = mapRawCocktailData(drinksArray);
+      handleHeartButtonClick(button, drinkObject);
+    });
+  });
 }
 
 export function generateFavPageHTML() {
@@ -232,7 +294,7 @@ export function generateFavPageHTML() {
 
 export function goToPage(pageId) {
   Object.entries(pages).forEach(([key, page]) => {
-    if (key === pageId) page.hidden = false;
-    else page.hidden = true;
+    if (key === pageId) page.classList.remove("hide");
+    else page.classList.add("hide");
   });
 }

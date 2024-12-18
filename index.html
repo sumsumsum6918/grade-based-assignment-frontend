@@ -24,7 +24,7 @@
   </head>
   <body>
     <nav>
-      <h1>
+      <h1 class="main-page-button">
         Drink <br />
         Tonight
       </h1>
@@ -39,26 +39,26 @@
             class="search-bar"
             type="text"
             placeholder="search"
+            required
           />
-          <span
+          <button
             class="material-symbols-outlined cocktail"
             role="button"
             id="search-button"
           >
             local_bar
-          </span>
+          </button>
         </form>
-        <span class="material-symbols-outlined filter filter-button">
-          tune
-        </span>
       </div>
       <div class="fav-cart">
-        <span class="material-symbols-outlined heart"> favorite </span>
+        <span class="material-symbols-outlined heart fav-page-button">
+          favorite
+        </span>
         <span></span>
       </div>
     </nav>
     <main>
-      <section hidden id="favorite-page">
+      <section class="hide" id="favorite-page">
         <p class="favorite-title">My Drinks</p>
         <div class="fav-container">
           <article class="fav-drink-card">
@@ -79,9 +79,9 @@
         </div>
       </section>
 
-      <section hidden id="filter-page">
-        <form class="filter-form" id="filter-form">
-          <p class="filter-title">Advance Search</p>
+      <section class="hide" id="filter-page">
+        <div class="filter-form hide" id="filter-form">
+          <p class="filter-title">Advanced Search</p>
 
           <div class="alcoholic-filter filter-container">
             <p class="filter-type">Alcoholic</p>
@@ -105,16 +105,25 @@
             <p class="filter-type">Glass</p>
             <div class="glass-filter-content filter-content"></div>
           </div>
-        </form>
-        <p class="search-title">Search Results</p>
+        </div>
+        <div class="search-title-container">
+          <p class="search-title">Search Results</p>
+          <span
+            class="material-symbols-outlined filter filter-button"
+            title="Advanced Search"
+          >
+            tune
+          </span>
+        </div>
         <div class="search-results-container">
           <p>No Results</p>
         </div>
+        <div class="pagination-container"></div>
       </section>
 
       <section id="random-drink-page"></section>
 
-      <section hidden id="details-page"></section>
+      <section class="hide" id="details-page"></section>
     </main>
     <script src="script/index.js" type="module"></script>
   </body>

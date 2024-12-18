@@ -1,5 +1,6 @@
 #filter-page {
   padding-inline: 3rem;
+  padding-bottom: 3rem;
 }
 .filter-title,
 .search-title,
@@ -9,6 +10,9 @@
   font-weight: bold;
   color: var(--charcoal);
   margin-bottom: 1rem;
+}
+.search-title {
+  margin-right: 4rem;
 }
 .filter-container {
   display: grid;
@@ -63,4 +67,20 @@
 .result-drink-card h3,
 .fav-drink-card h3 {
   font-size: 1rem;
+}
+.search-title-container {
+  display: flex;
+  align-items: center;
+}
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+.pagination-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 1.25rem;
 }
