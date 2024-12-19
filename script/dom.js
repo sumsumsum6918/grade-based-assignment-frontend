@@ -41,7 +41,6 @@ export function generateIndexHTML(drinkObject) {
             <span class="material-symbols-outlined  ${
               checkIfFaved(drinkObject.id) ? "heart-filled" : "heart"
             } random-heart-button"> favorite </span>
-            <span class="material-symbols-outlined share"> ios_share </span>
           </div>
         </div>
         <button class="reshake-button">Not The Vibe, Again</button>
@@ -68,7 +67,6 @@ export function generateDetailsPageHTML(drinkObject) {
                 <span class="material-symbols-outlined detailed-heart-button
                  ${checkIfFaved(drinkObject.id) ? "heart-filled" : "heart"}
                 "> favorite </span>
-                <span class="material-symbols-outlined share"> ios_share </span>
               </div>
               <div class="detail-drink-glass">Glass Type: ${
                 drinkObject.glass
@@ -95,7 +93,6 @@ export function generateDetailsPageHTML(drinkObject) {
   `;
   detailsPage.innerHTML = detailPageHTML;
 
-  console.log(drinkObject);
   generateDrinkTags(drinkObject);
   generateIngredientsCard(drinkObject.ingredients);
   generateInstructions(drinkObject.instructions);
@@ -165,13 +162,13 @@ function generateDrinkTags(drinkObject) {
 
 export function generateFilterHTML(array, type, stringName) {
   const containerElement = document.querySelector(`.${type}-filter-content`);
-  const strings = array.map((element) => element[stringName]).sort();
+  const filters = array.map((element) => element[stringName]).sort();
 
   let filterContentHTML = "";
 
-  strings.forEach((string) => {
+  filters.forEach((filter) => {
     filterContentHTML += `
-      <div class="filter-element" data-filter-string="${string}">${string}</div>
+      <div class="filter-element" data-filter-string="${filter}">${filter}</div>
     `;
   });
 
@@ -199,14 +196,15 @@ export function generateSearchResult(resultArray, page = 0) {
                  }" class="material-symbols-outlined search-heart-button
                   ${checkIfFaved(drinkObject.id) ? "heart-filled" : "heart"}
                  "> favorite </span>
-                 <span class="material-symbols-outlined share"> ios_share </span>
                </div>
              </article>
    `;
   });
+
   if (!searchResultsHTML) {
     searchResultsHTML = "<p>No Matching Results</p>";
   }
+
   const paginationContainer = document.querySelector(".pagination-container");
   paginationContainer.innerHTML = "";
 
@@ -282,7 +280,6 @@ export function generateFavPageHTML() {
                 ${
                   checkIfFaved(drink.id) ? "heart-filled" : "heart"
                 }" data-drink-id="${drink.id}"> favorite </span>
-                <span class="material-symbols-outlined share"> ios_share </span>
               </div>
             </article>
    `;
